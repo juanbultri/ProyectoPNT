@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BULTRJX\\source\\repos\\ProyectoPNT\\ProyectoPNT.csproj",
+      "projectUniqueName": "C:\\Users\\BULTRJX\\ProyectoPNT\\ProyectoPNT.csproj",
       "projectName": "ProyectoPNT",
-      "projectPath": "C:\\Users\\BULTRJX\\source\\repos\\ProyectoPNT\\ProyectoPNT.csproj",
+      "projectPath": "C:\\Users\\BULTRJX\\ProyectoPNT\\ProyectoPNT.csproj",
       "packagesPath": "C:\\Users\\BULTRJX\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BULTRJX\\source\\repos\\ProyectoPNT\\obj\\",
+      "outputPath": "C:\\Users\\BULTRJX\\ProyectoPNT\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\BULTRJX\\AppData\\Roaming\\NuGet\\NuGet.Config",

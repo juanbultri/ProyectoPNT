@@ -1,0 +1,15 @@
+C:\Users\BULTRJX\ProyectoPNT\bin\Debug\net6.0\ProyectoPNT.exe
+C:\Users\BULTRJX\ProyectoPNT\bin\Debug\net6.0\ProyectoPNT.deps.json
+C:\Users\BULTRJX\ProyectoPNT\bin\Debug\net6.0\ProyectoPNT.runtimeconfig.json
+C:\Users\BULTRJX\ProyectoPNT\bin\Debug\net6.0\ProyectoPNT.dll
+C:\Users\BULTRJX\ProyectoPNT\bin\Debug\net6.0\ProyectoPNT.pdb
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\ProyectoPNT.csproj.AssemblyReference.cache
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\ProyectoPNT.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\ProyectoPNT.AssemblyInfoInputs.cache
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\ProyectoPNT.AssemblyInfo.cs
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\ProyectoPNT.csproj.CoreCompileInputs.cache
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\ProyectoPNT.dll
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\refint\ProyectoPNT.dll
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\ProyectoPNT.pdb
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\ProyectoPNT.genruntimeconfig.cache
+C:\Users\BULTRJX\ProyectoPNT\obj\Debug\net6.0\ref\ProyectoPNT.dll
