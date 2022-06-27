@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ProyectoGym.Models.ActividadesUsuario>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Actividades</h1>
+<h4>@ViewBag.User.Nombres @ViewBag.User.Apellidos</h4>
+
+<p>
+    <a asp-action="Create" asp-route-userId="@ViewBag.User.Id">Agregar actividad</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividad.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividad.Dia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividad.Hora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividad.Duracion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actividad.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actividad.Dia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actividad.Hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Actividad.Duracion)
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id" asp-route-userId="@ViewBag.User.Id">Quitar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-area="" asp-controller="Usuario" asp-action="Index">Volver</a>
+</div>

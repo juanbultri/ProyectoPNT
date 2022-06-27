@@ -1,0 +1,62 @@
+﻿@model ProyectoGym.Models.ActividadesUsuario
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Agregar actividad</h1>
+<h4>@ViewBag.User.Nombres @ViewBag.User.Apellidos</h4>
+
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividad.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividad.Dia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividad.Hora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actividad.Duracion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in (List<Actividad>) ViewData["ActividadesParaAgregar"]) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duracion)
+            </td>
+            <td>
+                <form asp-action="Create" asp-route-userId="@ViewBag.User.Id" asp-route-actividadId="@item.Id">
+                    <input type="hidden" asp-for="Actividad.Id" value="@item.Id">
+                    <input type="submit" value="Agregar" class="btn btn-primary" />
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index" asp-route-id="@ViewBag.User.Id">Volver</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
