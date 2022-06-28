@@ -1,3 +1,5 @@
 .vs/
 obj/**
 bin/**
+ProyectoGym/bin/**
+ProyectoGym/obj/**

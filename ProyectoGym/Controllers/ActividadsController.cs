@@ -154,6 +154,15 @@ namespace ProyectoGym.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var actividadesUsuario = (from au in _context.ActividadesUsuario
+                                      where au.Actividad.Id == id
+                                      select au).ToList();
+
+            foreach (var act in actividadesUsuario)
+            {
+                _context.ActividadesUsuario.Remove(act);
+            }
+
             var actividad = await _context.Actividades.FindAsync(id);
             _context.Actividades.Remove(actividad);
             await _context.SaveChangesAsync();

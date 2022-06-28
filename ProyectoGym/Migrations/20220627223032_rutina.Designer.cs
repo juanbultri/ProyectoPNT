@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProyectoGym.Context;
 
 namespace ProyectoGym.Migrations
 {
     [DbContext(typeof(ProyectoGymContext))]
-    partial class ProyectoGymContextModelSnapshot : ModelSnapshot
+    [Migration("20220627223032_rutina")]
+    partial class rutina
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,12 +83,14 @@ namespace ProyectoGym.Migrations
                     b.Property<DateTime>("FechaInicio")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UsuarioId")
+                    b.Property<int?>("UsuarioId")
                         .HasColumnType("int");
 
                     b.HasKey("RutinaId");
 
-                    b.ToTable("Rutinas");
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Rutina");
                 });
 
             modelBuilder.Entity("ProyectoGym.Models.Usuario", b =>
@@ -127,6 +131,13 @@ namespace ProyectoGym.Migrations
 
                     b.HasOne("ProyectoGym.Models.Usuario", "Usuario")
                         .WithMany()
+                        .HasForeignKey("UsuarioId");
+                });
+
+            modelBuilder.Entity("ProyectoGym.Models.Rutina", b =>
+                {
+                    b.HasOne("ProyectoGym.Models.Usuario", null)
+                        .WithMany("Rutinas")
                         .HasForeignKey("UsuarioId");
                 });
 #pragma warning restore 612, 618

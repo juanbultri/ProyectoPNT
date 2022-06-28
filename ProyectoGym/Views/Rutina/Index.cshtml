@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProyectoGym.Models.Rutina>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" asp-route-userId="@ViewBag.UserId">Nueva rutina</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaInicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaFin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Detalle)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaInicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaFin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Detalle)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RutinaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RutinaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RutinaId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

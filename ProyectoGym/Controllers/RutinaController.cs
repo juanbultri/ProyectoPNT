@@ -10,22 +10,23 @@ using ProyectoGym.Models;
 
 namespace ProyectoGym.Controllers
 {
-    public class UsuarioController : Controller
+    public class RutinaController : Controller
     {
         private readonly ProyectoGymContext _context;
 
-        public UsuarioController(ProyectoGymContext context)
+        public RutinaController(ProyectoGymContext context)
         {
             _context = context;
         }
 
-        // GET: Usuario
-        public async Task<IActionResult> Index()
+        // GET: Rutina
+        public async Task<IActionResult> Index(int userId)
         {
-            return View(await _context.Usuarios.ToListAsync());
+            ViewBag.UserId = userId;
+            return View(await _context.Rutinas.Where(rutina => rutina.UsuarioId == userId).ToListAsync());
         }
 
-        // GET: Usuario/Details/5
+        // GET: Rutina/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +34,41 @@ namespace ProyectoGym.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuario == null)
+            var rutina = await _context.Rutinas
+                .FirstOrDefaultAsync(m => m.RutinaId == id);
+            if (rutina == null)
             {
                 return NotFound();
             }
 
-            return View(usuario);
+            return View(rutina);
         }
 
-        // GET: Usuario/Create
-        public IActionResult Create()
+        // GET: Rutina/Create
+        public IActionResult Create(int userId)
         {
+            ViewBag.UserId = userId;
             return View();
         }
 
-        // POST: Usuario/Create
+        // POST: Rutina/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombres,Apellidos,NombreUsuario,Password,Perfil,Plan")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("RutinaId,FechaInicio,FechaFin,Detalle")] Rutina rutina, int userId)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(usuario);
+                rutina.UsuarioId = userId;
+                _context.Add(rutina);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { @userId = userId});
             }
-            return View(usuario);
+            return View(rutina);
         }
 
-        // GET: Usuario/Edit/5
+        // GET: Rutina/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +76,22 @@ namespace ProyectoGym.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario == null)
+            var rutina = await _context.Rutinas.FindAsync(id);
+            if (rutina == null)
             {
                 return NotFound();
             }
-            return View(usuario);
+            return View(rutina);
         }
 
-        // POST: Usuario/Edit/5
+        // POST: Rutina/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombres,Apellidos,NombreUsuario,Password,Perfil,Plan")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("RutinaId,FechaInicio,FechaFin,Detalle")] Rutina rutina)
         {
-            if (id != usuario.Id)
+            if (id != rutina.RutinaId)
             {
                 return NotFound();
             }
@@ -97,12 +100,12 @@ namespace ProyectoGym.Controllers
             {
                 try
                 {
-                    _context.Update(usuario);
+                    _context.Update(rutina);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UsuarioExists(usuario.Id))
+                    if (!RutinaExists(rutina.RutinaId))
                     {
                         return NotFound();
                     }
@@ -113,10 +116,10 @@ namespace ProyectoGym.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(usuario);
+            return View(rutina);
         }
 
-        // GET: Usuario/Delete/5
+        // GET: Rutina/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,38 +127,30 @@ namespace ProyectoGym.Controllers
                 return NotFound();
             }
 
-            var usuario = await _context.Usuarios
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (usuario == null)
+            var rutina = await _context.Rutinas
+                .FirstOrDefaultAsync(m => m.RutinaId == id);
+            if (rutina == null)
             {
                 return NotFound();
             }
 
-            return View(usuario);
+            return View(rutina);
         }
 
-        // POST: Usuario/Delete/5
+        // POST: Rutina/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var actividadesUsuario = (from au in _context.ActividadesUsuario
-                                      where au.Usuario.Id == id
-                                      select au).ToList();
-
-            foreach (var act in actividadesUsuario) { 
-                _context.ActividadesUsuario.Remove(act);
-            }
-
-            var usuario = await _context.Usuarios.FindAsync(id);
-            _context.Usuarios.Remove(usuario);
+            var rutina = await _context.Rutinas.FindAsync(id);
+            _context.Rutinas.Remove(rutina);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UsuarioExists(int id)
+        private bool RutinaExists(int id)
         {
-            return _context.Usuarios.Any(e => e.Id == id);
+            return _context.Rutinas.Any(e => e.RutinaId == id);
         }
     }
 }

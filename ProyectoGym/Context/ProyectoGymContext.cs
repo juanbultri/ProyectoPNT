@@ -14,5 +14,7 @@ namespace ProyectoGym.Context
         public DbSet<Actividad> Actividades { get; set; }
 
         public DbSet<ProyectoGym.Models.ActividadesUsuario> ActividadesUsuario { get; set; }
+
+        public DbSet<ProyectoGym.Models.Rutina> Rutinas { get; set; }
     }
 }
