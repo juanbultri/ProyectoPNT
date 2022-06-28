@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create" asp-route-userId="@ViewBag.UserId">Nueva rutina</a>
 </p>
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -38,11 +38,26 @@
                 @Html.DisplayFor(modelItem => item.Detalle)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.RutinaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.RutinaId">Details</a> |
+                <a asp-action="Edit" asp-route-userId="@ViewBag.UserId" asp-route-id="@item.RutinaId">Edit</a> |
                 <a asp-action="Delete" asp-route-id="@item.RutinaId">Delete</a>
             </td>
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+
+@foreach (var item in Model) {
+
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+    <h5 class="card-title">@Html.DisplayNameFor(model => model.FechaInicio)</h5>
+    <h5 class="card-title">@Html.DisplayFor(modelItem => item.FechaInicio)</h5>
+    <h5 class="card-title">@Html.DisplayNameFor(model => model.FechaFin)</h5>
+    <h5 class="card-title">@Html.DisplayFor(modelItem => item.FechaFin)</h5>
+    <p class="card-text">@Html.DisplayFor(modelItem => item.Detalle)</p>
+    <a asp-action="Edit" asp-route-userId="@ViewBag.UserId" asp-route-id="@item.RutinaId">Edit</a> |
+    <a asp-action="Delete" asp-route-id="@item.RutinaId">Delete</a>
+  </div>
+</div>
+}

@@ -69,8 +69,10 @@ namespace ProyectoGym.Controllers
         }
 
         // GET: Rutina/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int userId)
         {
+            ViewBag.UserId = userId;
+
             if (id == null)
             {
                 return NotFound();
@@ -89,7 +91,7 @@ namespace ProyectoGym.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RutinaId,FechaInicio,FechaFin,Detalle")] Rutina rutina)
+        public async Task<IActionResult> Edit(int id, [Bind("RutinaId,FechaInicio,FechaFin,Detalle,UsuarioId")] Rutina rutina)
         {
             if (id != rutina.RutinaId)
             {
@@ -114,7 +116,7 @@ namespace ProyectoGym.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { @userId=rutina.UsuarioId });
             }
             return View(rutina);
         }
