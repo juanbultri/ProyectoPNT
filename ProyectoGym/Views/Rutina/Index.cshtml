@@ -14,7 +14,7 @@
 @foreach (var item in Model) {
 
 <div class="card" style="width: 100%; margin: 5px;">
-  <div class="card-body">
+  <div class="card-body cb-rutina">
     <h5 class="card-title">
         <b>@Html.DisplayNameFor(model => model.FechaInicio): </b>
         @Html.DisplayFor(modelItem => item.FechaInicio)
@@ -24,10 +24,14 @@
     </h5>
 
     <div>
-        <textarea class="card-text" style="width:100%; border: none; height: 150px; background-color: #FFFFFF" disabled>@Html.DisplayFor(modelItem => item.Detalle)</textarea>
+        <textarea class="card-text ta-rutina" disabled>@Html.DisplayFor(modelItem => item.Detalle)</textarea>
     </div>
     <a asp-action="Edit" asp-route-userId="@ViewBag.User.Id" asp-route-id="@item.RutinaId">Editar</a> |
     <a asp-action="Delete" asp-route-id="@item.RutinaId">Borrar</a>
   </div>
 </div>
 }
+
+<div>
+    <a asp-area="" asp-controller="Usuario" asp-action="Index">Volver</a>
+</div>
