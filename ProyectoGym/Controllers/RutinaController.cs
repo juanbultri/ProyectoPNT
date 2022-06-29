@@ -22,8 +22,8 @@ namespace ProyectoGym.Controllers
         // GET: Rutina
         public async Task<IActionResult> Index(int userId)
         {
-            ViewBag.UserId = userId;
-            return View(await _context.Rutinas.Where(rutina => rutina.UsuarioId == userId).ToListAsync());
+            ViewBag.User = await _context.Usuarios.FirstOrDefaultAsync(m => m.Id == userId);
+            return View(await _context.Rutinas.Where(rutina => rutina.UsuarioId == userId).OrderByDescending(rutina => rutina.RutinaId).ToListAsync());
         }
 
         // GET: Rutina/Details/5
@@ -56,14 +56,13 @@ namespace ProyectoGym.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RutinaId,FechaInicio,FechaFin,Detalle")] Rutina rutina, int userId)
+        public async Task<IActionResult> Create([Bind("RutinaId,FechaInicio,FechaFin,Detalle, UsuarioId")] Rutina rutina)
         {
             if (ModelState.IsValid)
             {
-                rutina.UsuarioId = userId;
                 _context.Add(rutina);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index), new { @userId = userId});
+                return RedirectToAction(nameof(Index), new { @userId = rutina.UsuarioId });
             }
             return View(rutina);
         }
@@ -147,7 +146,7 @@ namespace ProyectoGym.Controllers
             var rutina = await _context.Rutinas.FindAsync(id);
             _context.Rutinas.Remove(rutina);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { @userId = rutina.UsuarioId});
         }
 
         private bool RutinaExists(int id)

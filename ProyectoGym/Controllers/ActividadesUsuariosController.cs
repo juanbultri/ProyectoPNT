@@ -36,26 +36,25 @@ namespace ProyectoGym.Controllers
                          }).ToListAsync();
 
             return View(await datos);
-            //return View(await _context.ActividadesUsuario.Where(item => item.Usuario.Id == 2).ToListAsync());
         }
 
-        // GET: ActividadesUsuarios/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //// GET: ActividadesUsuarios/Details/5
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var actividadesUsuario = await _context.ActividadesUsuario
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (actividadesUsuario == null)
-            {
-                return NotFound();
-            }
+        //    var actividadesUsuario = await _context.ActividadesUsuario
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (actividadesUsuario == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(actividadesUsuario);
-        }
+        //    return View(actividadesUsuario);
+        //}
 
         // GET: ActividadesUsuarios/Create
         public ActionResult Create(int userId)
@@ -96,55 +95,55 @@ namespace ProyectoGym.Controllers
         }
 
         // GET: ActividadesUsuarios/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Edit(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var actividadesUsuario = await _context.ActividadesUsuario.FindAsync(id);
-            if (actividadesUsuario == null)
-            {
-                return NotFound();
-            }
-            return View(actividadesUsuario);
-        }
+        //    var actividadesUsuario = await _context.ActividadesUsuario.FindAsync(id);
+        //    if (actividadesUsuario == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(actividadesUsuario);
+        //}
 
         // POST: ActividadesUsuarios/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id")] ActividadesUsuario actividadesUsuario)
-        {
-            if (id != actividadesUsuario.Id)
-            {
-                return NotFound();
-            }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Edit(int id, [Bind("Id")] ActividadesUsuario actividadesUsuario)
+        //{
+        //    if (id != actividadesUsuario.Id)
+        //    {
+        //        return NotFound();
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(actividadesUsuario);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ActividadesUsuarioExists(actividadesUsuario.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(actividadesUsuario);
-        }
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            _context.Update(actividadesUsuario);
+        //            await _context.SaveChangesAsync();
+        //        }
+        //        catch (DbUpdateConcurrencyException)
+        //        {
+        //            if (!ActividadesUsuarioExists(actividadesUsuario.Id))
+        //            {
+        //                return NotFound();
+        //            }
+        //            else
+        //            {
+        //                throw;
+        //            }
+        //        }
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(actividadesUsuario);
+        //}
 
         // GET: ActividadesUsuarios/Delete/5
         public async Task<IActionResult> Delete(int? id, int? userId)
@@ -154,8 +153,19 @@ namespace ProyectoGym.Controllers
                 return NotFound();
             }
 
-            var actividadesUsuario = await _context.ActividadesUsuario
-                .FirstOrDefaultAsync(m => m.Id == id);
+
+            //var actividadesUsuario = await _context.ActividadesUsuario
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+
+            var actividadesUsuario = await (from au in _context.ActividadesUsuario
+                                            join a in _context.Actividades on au.Actividad.Id equals a.Id
+                                            where au.Id == id
+                                            select new ActividadesUsuario {
+                                                Id = au.Id,
+                                                Actividad = a
+                                            }).FirstOrDefaultAsync();
+
+
             if (actividadesUsuario == null)
             {
                 return NotFound();
@@ -175,14 +185,7 @@ namespace ProyectoGym.Controllers
             await _context.SaveChangesAsync();
 
 
-            //var redirect = RedirectToAction();
-            //redirect.ActionName = "Index"; // or can use nameof("") like  nameof(YourAction);
-            //redirect.RouteValues
-            //return redirect;
-
             return RedirectToAction(nameof(Index), new { @id = userId });
-
-            //return RedirectToAction(nameof(Index));
         }
 
         private bool ActividadesUsuarioExists(int id)

@@ -41,22 +41,22 @@ namespace ProyectoGym.Controllers
         }
 
         // GET: Actividads/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var actividad = await _context.Actividades
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (actividad == null)
-            {
-                return NotFound();
-            }
+        //    var actividad = await _context.Actividades
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (actividad == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(actividad);
-        }
+        //    return View(actividad);
+        //}
 
         // GET: Actividads/Create
         public IActionResult Create()

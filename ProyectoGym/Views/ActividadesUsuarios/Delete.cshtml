@@ -5,18 +5,41 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<h1>Borrar</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Esta seguro que desea quitar esta actividad?</h3>
 <div>
-    <h4>ActividadesUsuario</h4>
     <hr />
     <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Actividad.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Actividad.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Actividad.Dia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Actividad.Dia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Actividad.Hora)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Actividad.Hora)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Actividad.Duracion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Actividad.Duracion)
+        </dd>
     </dl>
     
     <form asp-action="Delete" asp-route-userId="@ViewBag.userId">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Quitar" class="btn btn-danger" /> |
         <a asp-route-id="@ViewBag.userId" asp-action="Index">Volver</a>
     </form>
 </div>

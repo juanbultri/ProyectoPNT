@@ -10,8 +10,18 @@ namespace ProyectoGym.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RutinaId { get; set; }
 
+        [Display(Name = "Inicio")]
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Debe especificar una fecha de inicio")]
         public DateTime FechaInicio { get; set; }
+
+        [Display(Name = "Fin")]
+        [DataType(DataType.Date)]
         public DateTime? FechaFin { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        [Required(ErrorMessage = "Debe escribir una rutina")]
+        [StringLength(300, MinimumLength = 10, ErrorMessage = "Debe de tener al menos 10 caracteres")]
         public String Detalle { get; set; }
 
         public int UsuarioId { get; set; }

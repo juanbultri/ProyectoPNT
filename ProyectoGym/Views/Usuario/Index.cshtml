@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ProyectoGym.Models.Usuario>
 
 @{
-    ViewData["Title"] = "Usuarios";
+    ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,9 +21,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.NombreUsuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Perfil)
@@ -47,18 +44,15 @@
                 @Html.DisplayFor(modelItem => item.NombreUsuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Perfil)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Plan)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a> |
                 <a asp-area="" asp-controller="ActividadesUsuarios" asp-route-id="@item.Id" asp-action="Index">Actividades</a> |
                 <a asp-area="" asp-controller="Rutina" asp-route-userId="@item.Id" asp-action="Index">Rutinas</a>
             </td>

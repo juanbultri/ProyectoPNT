@@ -13,9 +13,11 @@ namespace ProyectoGym.Models
         public string Nombres { get; set; }
         
         public string Apellidos { get; set; }
-        
+
+        [Display(Name = "Nombre de usuario")]
         public string NombreUsuario { get; set; }
-        
+
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [EnumDataType(typeof(Perfil))]
