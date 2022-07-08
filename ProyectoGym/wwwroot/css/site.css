@@ -2,26 +2,27 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #0366d6;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
 }
 
 /* Sticky footer styles
@@ -29,26 +30,28 @@ a {
 html {
     font-size: 14px;
 }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .border-top {
-  border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
 }
 
 .box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
 }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
@@ -60,10 +63,12 @@ html {
 
 body {
     /* Margin bottom by footer height */
-    background-color: #fce4b2;
+    background-color: #f9faff;
     /*min-height: 100%;*/
     margin-bottom: 60px;
+    color: #454545;
 }
+
 .footer {
     background-color: #ffffff;
     position: absolute;
@@ -75,16 +80,45 @@ body {
 
 /* CUSTOMS */
 
-.ta-rutina {
+h1 {
+    color: #003242;
+    font-weight: bold !important;
+    margin-top: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+    h1.display-4 {
+        margin-top: 30px !important;
+        margin-bottom: 0 !important;
+/*        margin-top: 30px;
+        margin-bottom: 0;
+*/    }
+
+/*.ta-rutina {
     width: 100%;
     border: none;
     height: 150px;
-    /*background-color: #FFFFFF;*/
     background-color: #fce4f2;
 }
+*/
+/*.form-control:disabled, .form-control[readonly] {
+    background-color: #F8F9FA;
+}*/
 
-.cb-rutina {
+/*.cb-rutina {
     background-color: #fce4f2;
+}
+*/
+.navbar {
+    padding: 20px;
+}
+
+.navbar-brand {
+    font-weight: bolder;
+}
+
+.bg-dark {
+    background-color: #082028 !important;
 }
 
 /*.full {
@@ -100,11 +134,9 @@ body {
     align-items: center;
 }
 
-
 /*.home {
     min-height: 100%;
     background-image: url("../assets/fondo.jpg");
     background-size: cover;
 }
 */
-
