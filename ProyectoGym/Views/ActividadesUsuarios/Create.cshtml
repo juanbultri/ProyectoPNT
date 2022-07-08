@@ -47,6 +47,7 @@
                 <form asp-action="Create" asp-route-userId="@ViewBag.User.Id" asp-route-actividadId="@item.Id">
                     <input type="hidden" asp-for="Actividad.Id" value="@item.Id">
                     <input type="submit" value="Agregar" class="btn btn-primary" />
+
                 </form>
             </td>
         </tr>

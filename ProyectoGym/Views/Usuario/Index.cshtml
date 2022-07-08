@@ -5,58 +5,71 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Usuarios</h1>
+<h1 class="text-center">Usuario</h1>
 
-<p>
-    <a asp-action="Create">Agregar usuario</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombres)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellidos)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreUsuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Perfil)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Plan)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombres)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellidos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Perfil)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Plan)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Borrar</a> |
-                <a asp-area="" asp-controller="ActividadesUsuarios" asp-route-id="@item.Id" asp-action="Index">Actividades</a> |
-                <a asp-area="" asp-controller="Rutina" asp-route-userId="@item.Id" asp-action="Index">Rutinas</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class = "row">
+    <div class="col-md-12">
+        <p>
+            <a asp-action="Create" class= "btn btn-primary float-right">Agregar usuario</a>
+        </p>
+    </div>   
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover mt-4">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nombres)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Apellidos)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NombreUsuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Perfil)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Plan)
+                    </th>
+                    <th></th>
+
+                </tr>
+            </thead>
+
+            <tbody>
+        @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NombreUsuario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Perfil)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Plan)
+                    </td>
+                    <td>
+                        <div class="btn-group float-right">
+                            <a asp-action="Edit" asp-route-id="@item.Id"class="btn btn-outline-primary btn-sm">Editar</a> 
+                            <a asp-action="Delete" asp-route-id="@item.Id"class="btn btn-outline-danger btn-sm">Borrar</a> 
+                            <a asp-area="" asp-controller="ActividadesUsuarios" asp-route-id="@item.Id" asp-action="Index"class="btn btn-outline-info btn-sm">Actividades</a> 
+                            <a asp-area="" asp-controller="Rutina" asp-route-userId="@item.Id" asp-action="Index"class="btn btn-outline-info btn-sm">Rutinas</a>
+                        </div>
+                    </td>
+                </tr>
+        }
+            </tbody>
+
+        </table>
+    </div> 
+</div> 

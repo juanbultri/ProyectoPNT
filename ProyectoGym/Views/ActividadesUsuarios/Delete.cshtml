@@ -39,7 +39,7 @@
     
     <form asp-action="Delete" asp-route-userId="@ViewBag.userId">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Quitar" class="btn btn-danger" /> |
-        <a asp-route-id="@ViewBag.userId" asp-action="Index">Volver</a>
+        <input type="submit" value="Quitar" class="btn btn-danger" /> 
+        <a asp-route-id="@ViewBag.userId" asp-action="Index" class="btn btn-default" >Cancelar</a>
     </form>
 </div>
