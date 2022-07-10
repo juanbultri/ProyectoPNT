@@ -60,6 +60,16 @@ namespace ProyectoGym.Controllers
         {
             if (ModelState.IsValid)
             {
+                var rutinas = (from r in _context.Rutinas
+                               where r.UsuarioId == rutina.UsuarioId && r.FechaFin == null
+                               select r
+                               ).ToArray();
+
+                foreach (var unaRutina in rutinas) {
+                    unaRutina.FechaFin = rutina.FechaInicio;
+                    _context.Update(unaRutina);
+                }
+
                 _context.Add(rutina);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index), new { @userId = rutina.UsuarioId });

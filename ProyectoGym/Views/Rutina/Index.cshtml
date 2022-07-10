@@ -27,7 +27,10 @@
         <b>@Html.DisplayNameFor(model => model.FechaInicio): </b>
         @Html.DisplayFor(modelItem => item.FechaInicio)
         &emsp;&emsp;
-        <b>@Html.DisplayNameFor(model => model.FechaFin): </b>
+                @if (item.FechaFin != null)
+                {
+                    <b>@Html.DisplayNameFor(model => model.FechaFin): </b>
+                }
         @Html.DisplayFor(modelItem => item.FechaFin)
     </h5>
 
