@@ -15,3 +15,15 @@ function listenerPerfil() {
         group_plan.style.display = "";
     }
 }
+
+function validateFormUser() {
+    let validation;
+    let perfil = document.getElementById("Perfil");
+    let plan = document.getElementById("Plan");
+
+    validation = !(perfil.value == 2 && (plan.value === null || plan.value === undefined || plan.value === ""))
+
+    if (!validation) alert("Debe elegir un plan para los SOCIOS");
+
+    return validation;
+}
