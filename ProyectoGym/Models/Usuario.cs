@@ -25,5 +25,7 @@ namespace ProyectoGym.Models
 
         [EnumDataType(typeof(Plan))]
         public Plan? Plan { get; set; }
+
+        public List<Rutina>? rutinas { get; set; }
     }
 }
