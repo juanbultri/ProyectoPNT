@@ -5,17 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Rutinas</h1>
-<h4>@ViewBag.User.Nombres @ViewBag.User.Apellidos</h4>
+<div class="text-center">
+    <h1>Rutinas</h1>
+</div>
 
 
-<p>
-    <a asp-action="Create" asp-route-userId="@ViewBag.User.Id">Nueva rutina</a>
-</p>
 @foreach (var item in Model) {
 
-<div class="card" style="width: 100%; margin: 5px;">
-  <div class="card-body cb-rutina">
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="float-left font-weight-bolder">@ViewBag.User.Nombres @ViewBag.User.Apellidos</h4>
+        <p class="float-right">
+            <a asp-action="Create" asp-route-userId="@ViewBag.User.Id" class="btn btn-primary">Nueva rutina</a>
+        </p>
+    </div>
+</div>
+
+<div class="card my-3">
+  <div class="card-body">
     <h5 class="card-title">
         <b>@Html.DisplayNameFor(model => model.FechaInicio): </b>
         @Html.DisplayFor(modelItem => item.FechaInicio)
@@ -24,11 +31,9 @@
         @Html.DisplayFor(modelItem => item.FechaFin)
     </h5>
 
-    <div>
-        <textarea class="card-text ta-rutina" disabled>@Html.DisplayFor(modelItem => item.Detalle)</textarea>
-    </div>
-    <a asp-action="Edit" asp-route-userId="@ViewBag.User.Id" asp-route-id="@item.RutinaId">Editar</a> |
-    <a asp-action="Delete" asp-route-id="@item.RutinaId">Borrar</a>
+    <textarea class="form-control my-4" disabled>@Html.DisplayFor(modelItem => item.Detalle)</textarea>
+    <a asp-action="Edit" asp-route-userId="@ViewBag.User.Id" asp-route-id="@item.RutinaId" class="btn btn-outline-success btn-sm">Editar</a>
+    <a asp-action="Delete" asp-route-id="@item.RutinaId" class="btn btn-outline-danger btn-sm">Borrar</a>
   </div>
 </div>
 }

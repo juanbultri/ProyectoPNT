@@ -90,25 +90,12 @@ h1 {
     h1.display-4 {
         margin-top: 30px !important;
         margin-bottom: 0 !important;
-/*        margin-top: 30px;
-        margin-bottom: 0;
-*/    }
+    }
 
-/*.ta-rutina {
-    width: 100%;
-    border: none;
-    height: 150px;
-    background-color: #fce4f2;
-}
-*/
-/*.form-control:disabled, .form-control[readonly] {
+.form-control:disabled, .form-control[readonly] {
     background-color: #F8F9FA;
-}*/
-
-/*.cb-rutina {
-    background-color: #fce4f2;
 }
-*/
+
 .navbar {
     padding: 20px;
 }
@@ -121,10 +108,6 @@ h1 {
     background-color: #082028 !important;
 }
 
-/*.full {
-    min-height: 100%;
-}*/
-
 .img-home {
     height: 80%;
     width: 100%;
@@ -133,10 +116,3 @@ h1 {
     resize: vertical;
     align-items: center;
 }
-
-/*.home {
-    min-height: 100%;
-    background-image: url("../assets/fondo.jpg");
-    background-size: cover;
-}
-*/
