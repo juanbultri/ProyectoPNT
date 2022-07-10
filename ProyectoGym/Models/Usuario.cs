@@ -22,7 +22,7 @@ namespace ProyectoGym.Models
         [Required(ErrorMessage = "Debe especificar un tipo de perfil")]
         [EnumDataType(typeof(Perfil))]
         public Perfil Perfil { get; set; }
-        [Required(ErrorMessage = "Debe especificar un Plan")]
+
         [EnumDataType(typeof(Plan))]
         public Plan? Plan { get; set; }
     }
