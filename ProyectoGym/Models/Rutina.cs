@@ -21,7 +21,7 @@ namespace ProyectoGym.Models
 
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Debe escribir una rutina")]
-        [StringLength(300, MinimumLength = 10, ErrorMessage = "Debe de tener al menos 10 caracteres")]
+        [StringLength(300,MinimumLength = 10, ErrorMessage = "Debe de tener al menos 10 caracteres y como máximo 300")]
         public String Detalle { get; set; }
 
         public int UsuarioId { get; set; }

@@ -34,7 +34,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="RutinaId" />
-        <input type="submit" value="Borrar" class="btn btn-danger" /> |
-        <a asp-action="Index" asp-route-userId="@Model.UsuarioId">Volver</a>
+        <input type="submit" value="Borrar" class="btn btn-danger" />
+        <a asp-action="Index" asp-route-userId="@Model.UsuarioId" class="btn btn-default">Cancelar</a>
     </form>
 </div>

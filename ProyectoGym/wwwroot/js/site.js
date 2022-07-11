@@ -27,3 +27,14 @@ function validateFormUser() {
 
     return validation;
 }
+
+function limitInitDate() {
+    let fechaInicio = document.getElementById("FechaInicio");
+    fechaInicio.min = new Date().toISOString().split("T")[0];
+}
+
+function cambioFechaFinMin() {
+    let fechaInicio = document.getElementById("FechaInicio");
+    let fechaFin = document.getElementById("FechaFin");
+    fechaFin.min = fechaInicio.value;
+}
